@@ -9,6 +9,7 @@ public class Match {
     private ArrayList<Player> players;
     private Map map;
     private String status;
+    private Result result;
 
     public Match(int ID, Mode mode, ArrayList<Player> players, Map map) {
         this.ID = ID;
@@ -48,6 +49,22 @@ public class Match {
 
     public void setMap(Map map) {
         this.map = map;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Result getResult() {
+        return result;
+    }
+
+    public void setResult(Result result) {
+        this.result = result;
     }
 
     public void start(){
