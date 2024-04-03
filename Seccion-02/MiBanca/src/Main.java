@@ -45,11 +45,8 @@ public class Main {
         while(true){
             showBranchMenu(banco.getSucursales());
             int opt = readInteger();
-            if(opt == 0){
-                break;
-            }else{
-                categories();
-            }
+            if(opt == 0) break;
+            else categories();
         }
     }
 
@@ -57,7 +54,7 @@ public class Main {
         while(true){
             showCatMenu();
             int opt = readInteger();
-            if(opt == 0){ break; }
+            if(opt == 0) break;
             switch(opt){
                 case 1: products(); break;
                 case 2: operations(); break;
@@ -169,8 +166,7 @@ public class Main {
     }
 
     private static void showBranchMenu(ArrayList<Sucursal> sucursales){
-        System.out.println("Seleccione la Sucursal que desea visitar");
-        System.out.println("*****************************************");
+        System.out.println("Seleccione la sucursal que desea visitar:");
         Iterator<Sucursal> iter = sucursales.iterator();
         int cont = 1;
         while (iter.hasNext()) {
