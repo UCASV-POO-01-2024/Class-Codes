@@ -2,6 +2,8 @@ package banca.cuentas;
 
 import personas.Persona;
 
+import java.util.Random;
+
 public class Tarjeta {
     private String numero;
     private String fechaVencimiento;
@@ -81,5 +83,14 @@ public class Tarjeta {
 
     public void pagar(double pago){
         saldo -= pago;
+    }
+
+    public static String createCardNumber(){
+        Random rand = new Random();
+        int part1 = rand.nextInt(8999)+1000;
+        int part2 = rand.nextInt(8999)+1000;
+        int part3 = rand.nextInt(8999)+1000;
+        int part4 = rand.nextInt(8999)+1000;
+        return part1+"-"+part2+"-"+part3+"-"+part4;
     }
 }

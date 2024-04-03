@@ -85,7 +85,7 @@ public class Main {
                         - Pedir los datos de la persona
                         - Crear tarjeta, registrar el propietario, y registrarla en el banco
                      */
-                    Tarjeta card = new Tarjeta(createCardNumber(),"25-08-2030","433", Persona.crearPersona(),"credito","03-04-2024",2000);
+                    Tarjeta card = new Tarjeta(Tarjeta.createCardNumber(),"25-08-2030","433", Persona.crearPersona(),"credito","03-04-2024",2000);
                     banco.addTarjeta(card);
                     System.out.println("Felicidades! Tiene usted una nueva tarjeta :)");
                     System.out.println("El número de su nueva tarjeta es: "+card.getNumero());
@@ -158,15 +158,6 @@ public class Main {
     private static String readString(){
         Scanner input = new Scanner(System.in);
         return input.nextLine();
-    }
-
-    private static String createCardNumber(){
-        Random rand = new Random();
-        int part1 = rand.nextInt(8999)+1000;
-        int part2 = rand.nextInt(8999)+1000;
-        int part3 = rand.nextInt(8999)+1000;
-        int part4 = rand.nextInt(8999)+1000;
-        return part1+"-"+part2+"-"+part3+"-"+part4;
     }
 
     private static void showMainMenu(){
