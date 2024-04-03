@@ -9,14 +9,18 @@ public class Tarjeta {
     private Persona propietario;
     private String tipo;
     private String fechaExpedicion;
+    private double monto;
+    private double saldo;
 
-    public Tarjeta(String numero, String fechaVencimiento, String CVV, Persona propietario, String tipo, String fechaExpedicion) {
+    public Tarjeta(String numero, String fechaVencimiento, String CVV, Persona propietario, String tipo, String fechaExpedicion, double monto) {
         this.numero = numero;
         this.fechaVencimiento = fechaVencimiento;
         this.CVV = CVV;
         this.propietario = propietario;
         this.tipo = tipo;
         this.fechaExpedicion = fechaExpedicion;
+        this.monto = monto;
+        saldo = 0;
     }
 
     public String getNumero() {
@@ -65,5 +69,17 @@ public class Tarjeta {
 
     public void setFechaExpedicion(String fechaExpedicion) {
         this.fechaExpedicion = fechaExpedicion;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public void pagar(double pago){
+        saldo -= pago;
     }
 }

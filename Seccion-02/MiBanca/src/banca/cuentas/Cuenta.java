@@ -1,14 +1,13 @@
 package banca.cuentas;
 
-import personas.Cliente;
-
 import java.util.ArrayList;
+import personas.Cliente;
 
 public class Cuenta {
     private int ID;
     private String tipo;
-    private float saldo;
-    private float saldoMinimo;
+    private double saldo;
+    private double saldoMinimo;
     private ArrayList<Cliente> clientes;
     private ArrayList<Transaccion> transacciones;
 
@@ -17,6 +16,8 @@ public class Cuenta {
         this.tipo = tipo;
         this.saldo = saldo;
         this.saldoMinimo = saldoMinimo;
+        clientes = new ArrayList<Cliente>();
+        transacciones = new ArrayList<Transaccion>();
     }
 
     public Cuenta(int ID, String tipo, float saldo, float saldoMinimo, ArrayList<Cliente> clientes) {
@@ -25,6 +26,7 @@ public class Cuenta {
         this.saldo = saldo;
         this.saldoMinimo = saldoMinimo;
         this.clientes = clientes;
+        transacciones = new ArrayList<Transaccion>();
     }
 
     public int getID() {
@@ -43,15 +45,15 @@ public class Cuenta {
         this.tipo = tipo;
     }
 
-    public float getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(float saldo) {
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 
-    public float getSaldoMinimo() {
+    public double getSaldoMinimo() {
         return saldoMinimo;
     }
 
@@ -75,19 +77,28 @@ public class Cuenta {
         this.transacciones = transacciones;
     }
 
-    public void addCliente(Cliente c){
+    public void addCliente(Cliente c) {
         clientes.add(c);
     }
 
-    public Cliente getCliente(int pos){
+    public Cliente getCliente(int pos) {
         return clientes.get(pos);
     }
 
-    public void addTransaccion(Transaccion t){
+    public void addTransaccion(Transaccion t) {
         transacciones.add(t);
     }
 
-    public Transaccion getTransaccione(int pos){
+    public Transaccion getTransaccione(int pos) {
         return transacciones.get(pos);
     }
+
+    public void abonar(double abono){
+        saldo += abono;
+    }
+
+    public void retirar(double retiro){
+        saldo -= retiro;
+    }
+
 }

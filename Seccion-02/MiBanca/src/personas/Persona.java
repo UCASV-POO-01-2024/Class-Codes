@@ -1,5 +1,7 @@
 package personas;
 
+import java.util.Scanner;
+
 public class Persona {
     private String DUI;
     private String nombre;
@@ -8,6 +10,10 @@ public class Persona {
     private String correo;
     private String telefono;
     private String domicilio;
+
+    private Persona(){
+
+    }
 
     public Persona(String DUI, String nombre, String apellido, String fechaNacimiento, String correo, String telefono, String domicilio) {
         this.DUI = DUI;
@@ -73,5 +79,27 @@ public class Persona {
 
     public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
+    }
+
+    public static Persona crearPersona(){
+        Persona p = new Persona();
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Ingrese su número de DUI:");
+        p.setDUI(input.nextLine());
+        System.out.println("Ingrese sus nombres:");
+        p.setNombre(input.nextLine());
+        System.out.println("Ingrese sus apellidos:");
+        p.setApellido(input.nextLine());
+        System.out.println("Ingrese su fecha de nacimiento:");
+        p.setFechaNacimiento(input.nextLine());
+        System.out.println("Ingrese su correo:");
+        p.setCorreo(input.nextLine());
+        System.out.println("Ingrese su número de teléfono:");
+        p.setTelefono(input.nextLine());
+        System.out.println("Ingrese su domicilio:");
+        p.setDomicilio(input.nextLine());
+
+        return p;
     }
 }

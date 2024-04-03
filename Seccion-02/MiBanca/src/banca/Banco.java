@@ -4,6 +4,7 @@ import banca.cuentas.Cuenta;
 import banca.cuentas.Tarjeta;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Banco {
     private int ID;
@@ -15,6 +16,9 @@ public class Banco {
     public Banco(int ID, String nombre) {
         this.ID = ID;
         this.nombre = nombre;
+        sucursales = new ArrayList<Sucursal>();
+        cuentas = new ArrayList<Cuenta>();
+        tarjetas = new ArrayList<Tarjeta>();
     }
 
     public Banco(int ID, String nombre, ArrayList<Sucursal> sucursales, ArrayList<Cuenta> cuentas, ArrayList<Tarjeta> tarjetas) {
@@ -23,6 +27,9 @@ public class Banco {
         this.sucursales = sucursales;
         this.cuentas = cuentas;
         this.tarjetas = tarjetas;
+        sucursales = new ArrayList<Sucursal>();
+        cuentas = new ArrayList<Cuenta>();
+        tarjetas = new ArrayList<Tarjeta>();
     }
 
     public int getID() {
@@ -65,27 +72,39 @@ public class Banco {
         this.tarjetas = tarjetas;
     }
 
-    public void addSede(Sucursal s){
+    public void addSede(Sucursal s) {
         sucursales.add(s);
     }
 
-    public Sucursal getSucursal(int pos){
+    public Sucursal getSucursal(int pos) {
         return sucursales.get(pos);
     }
 
-    public void addCuenta(Cuenta c){
+    public void addCuenta(Cuenta c) {
         cuentas.add(c);
     }
 
-    public Cuenta getCuenta(int pos){
+    public Cuenta getCuenta(int pos) {
         return cuentas.get(pos);
     }
 
-    public void addTarjeta(Tarjeta t){
+    public void addTarjeta(Tarjeta t) {
         tarjetas.add(t);
     }
 
-    public Tarjeta getTarjeta(int pos){
+    public Tarjeta getTarjeta(int pos) {
         return tarjetas.get(pos);
+    }
+
+    public Tarjeta getCardByNumber(String number){
+        Iterator<Tarjeta> iter = tarjetas.iterator();
+        Tarjeta t = null;
+        while(iter.hasNext()){
+            t = iter.next();
+            if(t.getNumero().equals(number)){
+                break;
+            }
+        }
+        return t;
     }
 }

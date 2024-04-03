@@ -13,6 +13,15 @@ public class Sucursal {
     private ArrayList<Empleado> empleados;
     private ArrayList<Cliente> clientes;
 
+    public Sucursal(int ID, String direccion, String telefono, Empleado gerente, ArrayList<Empleado> empleados) {
+        this.ID = ID;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.gerente = gerente;
+        this.empleados = empleados;
+        clientes = new ArrayList<Cliente>();
+    }
+
     public Sucursal(int ID, String direccion, String telefono, Empleado gerente, ArrayList<Empleado> empleados, ArrayList<Cliente> clientes) {
         this.ID = ID;
         this.direccion = direccion;

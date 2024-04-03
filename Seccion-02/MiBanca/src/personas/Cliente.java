@@ -1,5 +1,6 @@
 package personas;
 
+import banca.cuentas.Cuenta;
 import java.util.ArrayList;
 
 public class Cliente extends Persona {
@@ -13,6 +14,7 @@ public class Cliente extends Persona {
         this.ID = ID;
         this.status = status;
         this.estado = estado;
+        cuentas = new ArrayList<Cuenta>();
     }
 
     public Cliente(String DUI, String nombre, String apellido, String fechaNacimiento, String correo, String telefono, String domicilio, int ID, String status, String estado, ArrayList<Cuenta> cuentas) {
@@ -55,11 +57,11 @@ public class Cliente extends Persona {
         this.cuentas = cuentas;
     }
 
-    public void addCuenta(Cuenta c){
+    public void addCuenta(Cuenta c) {
         cuentas.add(c);
     }
 
-    public Cuenta getCuenta(int pos){
+    public Cuenta getCuenta(int pos) {
         return cuentas.get(pos);
     }
 }
