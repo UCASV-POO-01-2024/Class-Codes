@@ -96,7 +96,7 @@ public class Banco {
         return tarjetas.get(pos);
     }
 
-    public Tarjeta getCardByNumber(String number){
+    public Tarjeta getTarjeta(String number){
         Iterator<Tarjeta> iter = tarjetas.iterator();
         Tarjeta t = null;
         while(iter.hasNext()){

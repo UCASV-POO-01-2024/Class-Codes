@@ -6,7 +6,6 @@ import personas.Persona;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -126,7 +125,7 @@ public class Main {
                         - Utilizar método pagar() de la tarjeta.
                      */
                     System.out.println("Ingrese el número de la tarjeta:");
-                    Tarjeta card = banco.getCardByNumber(readString());
+                    Tarjeta card = banco.getTarjeta(readString());
                     System.out.println("Ingrese el monto a pagar:");
                     card.pagar(readInteger());
                     System.out.println("Pago realizado con éxito! :)");
