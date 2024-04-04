@@ -22,7 +22,7 @@ public class Main {
         empleados.add(cajero);
         empleados.add(recepcionista);
         Sucursal sucursal = new Sucursal(1,"Blvd. Los Próceres","2212-2000",gerente,empleados);
-        banco.addSede(sucursal);
+        banco.addSucursal(sucursal);
 
         run();
     }
@@ -170,6 +170,7 @@ public class Main {
         int cont = 1;
         while (iter.hasNext()) {
             System.out.println(cont+". "+iter.next().getDireccion());
+            cont++;
         }
         System.out.println("0. Regresar al menú principal");
     }

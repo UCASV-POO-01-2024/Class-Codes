@@ -2,11 +2,11 @@ package personas;
 
 public class Empleado extends Persona {
     private int ID;
-    private float salario;
+    private double salario;
     private String fechaPago;
     private String tipo;
 
-    public Empleado(String DUI, String nombre, String apellido, String fechaNacimiento, String correo, String telefono, String domicilio, int ID, float salario, String fechaPago, String tipo) {
+    public Empleado(String DUI, String nombre, String apellido, String fechaNacimiento, String correo, String telefono, String domicilio, int ID, double salario, String fechaPago, String tipo) {
         super(DUI, nombre, apellido, fechaNacimiento, correo, telefono, domicilio);
         this.ID = ID;
         this.salario = salario;
@@ -22,11 +22,11 @@ public class Empleado extends Persona {
         this.ID = ID;
     }
 
-    public float getSalario() {
+    public double getSalario() {
         return salario;
     }
 
-    public void setSalario(float salario) {
+    public void setSalario(double salario) {
         this.salario = salario;
     }
 

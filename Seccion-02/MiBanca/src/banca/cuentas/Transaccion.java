@@ -3,13 +3,13 @@ package banca.cuentas;
 public class Transaccion {
     private int ID;
     private String tipo;
-    private float monto;
+    private double monto;
     private String fecha;
     private Cuenta destino;
     private Cuenta fuente;
     private String detalle;
 
-    public Transaccion(int ID, String tipo, float monto, String fecha, Cuenta destino, Cuenta fuente, String detalle) {
+    public Transaccion(int ID, String tipo, double monto, String fecha, Cuenta destino, Cuenta fuente, String detalle) {
         this.ID = ID;
         this.tipo = tipo;
         this.monto = monto;
@@ -35,11 +35,11 @@ public class Transaccion {
         this.tipo = tipo;
     }
 
-    public float getMonto() {
+    public double getMonto() {
         return monto;
     }
 
-    public void setMonto(float monto) {
+    public void setMonto(double monto) {
         this.monto = monto;
     }
 

@@ -1,7 +1,6 @@
 package banca;
 
-import banca.cuentas.Cuenta;
-import banca.cuentas.Tarjeta;
+import banca.cuentas.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -27,9 +26,6 @@ public class Banco {
         this.sucursales = sucursales;
         this.cuentas = cuentas;
         this.tarjetas = tarjetas;
-        sucursales = new ArrayList<Sucursal>();
-        cuentas = new ArrayList<Cuenta>();
-        tarjetas = new ArrayList<Tarjeta>();
     }
 
     public int getID() {
@@ -72,7 +68,7 @@ public class Banco {
         this.tarjetas = tarjetas;
     }
 
-    public void addSede(Sucursal s) {
+    public void addSucursal(Sucursal s) {
         sucursales.add(s);
     }
 
