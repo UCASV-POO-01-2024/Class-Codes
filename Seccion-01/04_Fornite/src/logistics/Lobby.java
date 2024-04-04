@@ -15,6 +15,7 @@ public class Lobby {
     public Lobby(int ID, ArrayList<Option> options) {
         this.ID = ID;
         this.options = options;
+        players = new ArrayList<Player>();
     }
 
     public int getID() {
@@ -23,6 +24,22 @@ public class Lobby {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+
+    public ArrayList<Option> getOptions() {
+        return options;
+    }
+
+    public void setOptions(ArrayList<Option> options) {
+        this.options = options;
     }
 
     public void addPlayer(Player p){

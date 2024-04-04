@@ -2,11 +2,11 @@ package items;
 
 public class Weapon extends Item {
     private int numberShots;
-    private float damage;
+    private double damage;
     private int durability;
     private String condition;
 
-    public Weapon(int ID, String name, int numberShots, float damage, int durability) {
+    public Weapon(int ID, String name, int numberShots, double damage, int durability) {
         super(ID, name, durability);
         this.numberShots = numberShots;
         this.damage = damage;
@@ -22,11 +22,11 @@ public class Weapon extends Item {
         this.numberShots = numberShots;
     }
 
-    public float getDamage() {
+    public double getDamage() {
         return damage;
     }
 
-    public void setDamage(float damage) {
+    public void setDamage(double damage) {
         this.damage = damage;
     }
 

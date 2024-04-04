@@ -4,8 +4,8 @@ public class Healing extends Item {
     private int numberUses;
     private int restoreAmount;
 
-    public Healing(int ID, String name, int durability, int numberUses, int restoreAmount) {
-        super(ID, name, durability);
+    public Healing(int ID, String name, int numberUses, int restoreAmount) {
+        super(ID, name);
         this.numberUses = numberUses;
         this.restoreAmount = restoreAmount;
     }

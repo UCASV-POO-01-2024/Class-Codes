@@ -5,8 +5,8 @@ public class Material extends Item{
     private String benefits;
     private String drawbacks;
 
-    public Material(int ID, String name, int durability, String type, String benefits, String drawbacks) {
-        super(ID, name, durability);
+    public Material(int ID, String name, String type, String benefits, String drawbacks) {
+        super(ID, name);
         this.type = type;
         this.benefits = benefits;
         this.drawbacks = drawbacks;
