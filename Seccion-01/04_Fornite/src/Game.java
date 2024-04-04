@@ -76,7 +76,10 @@ public class Game {
     }
 
     private static void run(Match match){
-        //TODO
+        /*
+            - Mostrar un menú de opciones (buscar item, agarrar item, usar item, dañar a gluien, hacer una construcciòn, (moverse))
+            - Implementaciòn de cada opción
+         */
     }
 }
 

@@ -7,7 +7,7 @@ public class Weapon extends Item {
     private String condition;
 
     public Weapon(int ID, String name, int numberShots, double damage, int durability) {
-        super(ID, name, durability);
+        super(ID, name);
         this.numberShots = numberShots;
         this.damage = damage;
         this.durability = durability;

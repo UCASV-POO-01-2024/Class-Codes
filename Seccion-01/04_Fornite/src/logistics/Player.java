@@ -6,7 +6,7 @@ import util.GeneralUtilities;
 import java.util.*;
 
 public class Player {
-    private static int nextID;
+    private static int nextID = 1;
     private int ID;
     private String nickname;
     private String country;
@@ -17,7 +17,7 @@ public class Player {
     private ArrayList<Material> materials;
 
     private Player(){
-        nextID = 1;
+        //nextID = 1;
         status = "alive";
         HP = 100; //100%
         weapons = new ArrayList<Weapon>();
