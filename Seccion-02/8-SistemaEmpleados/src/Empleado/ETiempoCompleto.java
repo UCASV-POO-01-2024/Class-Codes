@@ -6,7 +6,7 @@ public class ETiempoCompleto extends Empleado {
     public ETiempoCompleto() {}
 
     public ETiempoCompleto(Persona persona, String carnet, float salarioBase) {
-        guardarDatosPersonales(persona);
+        super(persona);
         setCarnet(carnet);
         setSalarioBase(salarioBase);
     }

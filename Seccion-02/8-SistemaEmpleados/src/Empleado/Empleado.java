@@ -6,11 +6,13 @@ public abstract class Empleado extends Persona {
     private String carnet;
     protected float salarioBase;
 
-    public abstract float obtenerSalario();
+    public Empleado(){}
 
-    public void guardarDatosPersonales(Persona persona){
-        copiarPersona(persona);
+    public Empleado(Persona persona){
+        super(persona);
     }
+
+    public abstract float obtenerSalario();
 
     public String getCarnet() {
         return carnet;

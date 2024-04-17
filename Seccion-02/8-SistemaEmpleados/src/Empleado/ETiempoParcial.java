@@ -6,7 +6,7 @@ public class ETiempoParcial extends Empleado implements PagoPorHoras{
     private int horasDeTrabajoBase;
 
     public ETiempoParcial(Persona persona, String carnet, float salarioBase, int horasDeTrabajoBase) {
-        guardarDatosPersonales(persona);
+        super(persona);
         setCarnet(carnet);
         setSalarioBase(salarioBase);
         this.horasDeTrabajoBase = horasDeTrabajoBase;

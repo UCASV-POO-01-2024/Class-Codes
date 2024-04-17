@@ -6,7 +6,7 @@ public class ETemporal extends Empleado {
     public ETemporal() {}
 
     public ETemporal(Persona persona, String carnet, float salarioBase) {
-        guardarDatosPersonales(persona);
+        super(persona);
         setCarnet(carnet);
         setSalarioBase(salarioBase);
     }
