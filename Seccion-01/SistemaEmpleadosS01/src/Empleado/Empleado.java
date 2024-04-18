@@ -6,8 +6,8 @@ public abstract class Empleado extends Persona{
     private String carnet;
     protected float salarioBase;
 
-    protected void inicializarEmpleado(Persona persona, String carnet, float salarioBase){
-        copiarPersona(persona);
+    public Empleado(Persona persona, String carnet, float salarioBase){
+        super(persona);
         setCarnet(carnet);
         setSalarioBase(salarioBase);
     }

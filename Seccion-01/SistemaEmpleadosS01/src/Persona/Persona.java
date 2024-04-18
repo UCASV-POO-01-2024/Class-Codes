@@ -19,7 +19,7 @@ public class Persona {
         this.telefono = telefono;
     }
 
-    protected void copiarPersona(Persona persona) {
+    public Persona(Persona persona) {
         DUI = persona.DUI;
         nombre = persona.nombre;
         fechaNacimiento = persona.fechaNacimiento;
