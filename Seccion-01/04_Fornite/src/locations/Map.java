@@ -23,6 +23,7 @@ public class Map {
         this.characteristics = characteristics;
         this.storm = storm;
         this.items = items;
+        constructions = new ArrayList<Construction>();
     }
 
     public int getID() {
