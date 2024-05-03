@@ -1,8 +1,12 @@
+import AbstractFactory.AbstractFactoryClient;
+import Enums.Materiales;
 import Factory.*;
 import Singleton.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static Enums.Materiales.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -38,5 +42,10 @@ public class Main {
 
         //-----------AbstractFactory 😪---------------------
         System.out.println("\n----------------------------------\n");
+
+        AbstractFactoryClient cliente2 = new AbstractFactoryClient(MADERA);
+        System.out.println(cliente2.createArmario().getMaterial());
+        cliente2.setCurrentFactory(METAL);
+        System.out.println(cliente2.createArmario().getMaterial());
     }
 }
