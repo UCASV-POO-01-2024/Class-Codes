@@ -1,4 +1,5 @@
 import AbstractFactory.AbstractFactoryClient;
+import Builder.*;
 import Enums.Materiales;
 import Factory.*;
 import Singleton.*;
@@ -47,5 +48,9 @@ public class Main {
         System.out.println(cliente2.createArmario().getMaterial());
         cliente2.setCurrentFactory(METAL);
         System.out.println(cliente2.createArmario().getMaterial());
+
+        //-----------Builder---------------------
+        PCBuilder zonaDigital = new PCBuilder();
+
     }
 }
