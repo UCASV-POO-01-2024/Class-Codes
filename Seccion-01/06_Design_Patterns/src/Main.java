@@ -20,10 +20,11 @@ public class Main {
         //Using Factory
         StudentFactory factory = null;
         Student student;
+
         boolean flag = true;
 
         while(flag) {
-            System.out.println("\n\nHello, what do you want to study?\n1. Undergradute program.\n2. Master's program.\n3. PhD.\n0.Salir.");
+            System.out.println("\n\nHello, what do you want to study?\n1. Undergraduate program.\n2. Master's program.\n3. PhD.\n0.Salir.");
             Scanner input = new Scanner(System.in);
             int choice = input.nextInt();
             switch (choice) {
@@ -42,11 +43,10 @@ public class Main {
             }
             if (flag){
                 student = factory.createStudent();
-                student.careerEnroll();
-                student.courseEnroll();
+                student.enroll();
+                student.attendCourse();
                 student.graduate();
             }
-            else break;
         }
     }
 }
