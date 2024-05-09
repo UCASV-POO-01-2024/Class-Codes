@@ -1,22 +1,15 @@
 public class Cajero extends Empleado {
-    public Cajero(Mediator med, int ID, String nombre, String cargo) {
+    public Cajero(Mediator med, String ID, String nombre, String cargo) {
         super(med, ID, nombre, cargo);
     }
 
     @Override
     public void sendMessage(String msg, String to) {
-        getMediator().notify(msg, to, "cajero");
+        getMediator().notify(msg, to, getID());
     }
 
     @Override
-    public void receiveMessage(String msg, String from) {
-        switch(from){
-            case "ceo":
-                System.out.println("De inmediato, señor.");
-                break;
-            case "gerente":
-                System.out.println("Está bien.");
-                break;
-        }
+    public void receiveMessage(String msg) {
+        System.out.println("Cajero "+getID()+": Message received ["+msg+" ]");
     }
 }

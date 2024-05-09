@@ -1,10 +1,10 @@
 public abstract class Empleado {
     private Mediator med;
-    private int ID;
+    private String ID;
     private String nombre;
     private String cargo;
 
-    public Empleado(Mediator med, int ID, String nombre, String cargo) {
+    public Empleado(Mediator med, String ID, String nombre, String cargo) {
         this.med = med;
         this.ID = ID;
         this.nombre = nombre;
@@ -19,11 +19,11 @@ public abstract class Empleado {
         this.med = med;
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
@@ -44,5 +44,6 @@ public abstract class Empleado {
     }
 
     public abstract void sendMessage(String msg, String to);
-    public abstract void receiveMessage(String msg, String from);
+
+    public abstract void receiveMessage(String msg);
 }
