@@ -5,8 +5,8 @@ public class Gerente extends Empleado{
     private int empleadosACargo;
     private int rank;
 
-    public Gerente(String nombre, String apellido, int edad, String direccion, String ID, String cargo, double salario, String departamento, int empleadosACargo, int rank) {
-        super(nombre, apellido, edad, direccion, ID, cargo, salario);
+    public Gerente(String nombre, String apellido, int edad, String direccion, String ID, double salario, String departamento, int empleadosACargo, int rank) {
+        super(nombre, apellido, edad, direccion, ID, "gerente", salario);
         this.departamento = departamento;
         this.empleadosACargo = empleadosACargo;
         this.rank = rank;
@@ -34,5 +34,10 @@ public class Gerente extends Empleado{
 
     public void setRank(int rank) {
         this.rank = rank;
+    }
+
+    @Override
+    public Empleado superior(){
+        return null;
     }
 }
