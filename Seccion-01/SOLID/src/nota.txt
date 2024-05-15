@@ -1,0 +1,1 @@
+Los códigos de este proyecto son ejemplos de lo que NO se debe hacer, ejemplos de códigos que violan los principios SOLID.
