@@ -8,7 +8,7 @@ public class CheckRegHandler implements Handler{
 
     @Override
     public boolean handle(Persona p) {
-        if(p.getTimesReg() <= 8){
+        if(p.getTimesReg() <= 5){
             if(next == null){
                 return true;
             }else return next.handle(p);

@@ -2,9 +2,9 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args){
-        Persona p = new Persona("Mary Poppins","carpintera",3,1,LocalDate.of(1994,5,14),LocalDate.of(2020,3,7));
+        Persona p = new Persona("Mary Poppins","estudiante",3,1,LocalDate.of(1999,5,14),LocalDate.of(2020,3,7));
 
-        Handler chain = makeChain(new CheckProfessionHandler(), new CheckWFHandler(), new CheckRegHandler(), new CheckAgeHandler(), new CheckStudyYearsHandler());
+        Handler chain = makeChain(  new CheckProfessionHandler(), new CheckRegHandler(), new CheckAgeHandler(), new CheckStudyYearsHandler());
 
         if(chain.handle(p)){
             System.out.println("Puedes participar :)");

@@ -11,8 +11,8 @@ public class CheckStudyYearsHandler implements Handler{
     @Override
     public boolean handle(Persona p) {
         LocalDate d = p.getFechaInicioEstudios();
-        int age = LocalDate.now().getYear() - d.getYear();
-        if(age <= 5){
+        int studyYears = LocalDate.now().getYear() - d.getYear();
+        if(studyYears <= 5){
             if(next == null){
                 return true;
             }else return next.handle(p);
