@@ -1,7 +1,6 @@
 package factory;
-
 public interface Student {
-    public void careerEnroll();
-    public void courseEnroll();
+    public void enroll();
+    public void attendCourse();
     public void graduate();
 }
