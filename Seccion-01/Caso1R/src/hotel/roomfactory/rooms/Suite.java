@@ -3,8 +3,8 @@ package hotel.roomfactory.rooms;
 public class Suite extends Room {
     private final int numJacuzzi = 1;
 
-    public Suite(int capacidad, String roomID) {
-        super(capacidad, roomID);
+    public Suite(int capacidad, String roomID, String status) {
+        super(capacidad, roomID, status);
     }
 
     public int getNumJacuzzi() {

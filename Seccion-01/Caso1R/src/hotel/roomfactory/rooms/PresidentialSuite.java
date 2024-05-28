@@ -5,8 +5,8 @@ public class PresidentialSuite extends Room {
     private final int numBaths = 3;
     private final int numSauna = 1;
 
-    public PresidentialSuite(int capacidad, String roomID) {
-        super(capacidad, roomID);
+    public PresidentialSuite(int capacidad, String roomID, String status) {
+        super(capacidad, roomID, status);
     }
 
     public int getNumJacuzzi() {

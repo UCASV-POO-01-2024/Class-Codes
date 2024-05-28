@@ -1,8 +1,8 @@
 package hotel.roomfactory.rooms;
 
 public class SingleRoom extends Room {
-    public SingleRoom(int capacidad, String roomID) {
-        super(capacidad, roomID);
+    public SingleRoom(int capacidad, String roomID, String status) {
+        super(capacidad, roomID, status);
     }
 
     @Override
