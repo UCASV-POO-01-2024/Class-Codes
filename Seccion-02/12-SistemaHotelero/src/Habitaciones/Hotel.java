@@ -3,9 +3,15 @@ package Habitaciones;
 import java.util.ArrayList;
 
 public class Hotel {
+
+    private static Hotel instance;
     private ArrayList<ArrayList<Habitacion>> habitaciones;
 
-    public Hotel(int filas, int columnas){
+    private Hotel(int filas, int columnas){
+        setHotelLayout(filas, columnas);
+    }
+
+    public void setHotelLayout(int filas, int columnas){
         habitaciones = new ArrayList<>();
         for (int i = 0; i < filas; i++) {
             ArrayList<Habitacion> fila= new ArrayList<>();
@@ -16,8 +22,15 @@ public class Hotel {
         }
     }
 
-    public Hotel(){
+    private Hotel(){
         habitaciones = new ArrayList<>();
+    }
+
+    public static Hotel getInstance(){
+        if(instance == null){
+            instance = new Hotel();
+        }
+        return instance;
     }
 
     public void agregarHabitacion(String tipo, int numeroHabitacion, double precio, int[] coordenadas){
@@ -64,14 +77,31 @@ public class Hotel {
         }
     }
 
+    public Habitacion obtenerHabitacion(int fila, int columna) throws IndexOutOfBoundsException{
+        return habitaciones.get(fila).get(columna);
+    }
+
     public void mostrarHabitaciones(){
-        for (ArrayList<Habitacion> fila: habitaciones) {
+        /*for (ArrayList<Habitacion> fila: habitaciones) {
             for (Habitacion habitacion: fila) {
                 System.out.print(
                         (habitacion==null
                         ?"Vacio"
                         :habitacion.obtenerTipoHabitacion())
                         + " | "
+                );
+            }
+            System.out.println();
+        }*/
+        for (int i = 0; i<habitaciones.size(); i++) {
+            ArrayList<Habitacion> fila = habitaciones.get(i);
+            for (int j = 0; j<fila.size(); j++) {
+                Habitacion habitacion = fila.get(j);
+                System.out.print(
+                        (habitacion==null
+                                ?"Vacio"
+                                :((i+1)+"-"+(j+1)))
+                                + " | "
                 );
             }
             System.out.println();
