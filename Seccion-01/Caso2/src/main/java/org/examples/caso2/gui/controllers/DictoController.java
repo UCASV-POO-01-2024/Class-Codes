@@ -17,6 +17,7 @@ import org.examples.caso2.models.Dictionary;
 import org.examples.caso2.models.iterators.MyIterator;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.Map;
 
 public class DictoController {
@@ -35,13 +36,7 @@ public class DictoController {
     @FXML
     private HBox hboxFunctions;
 
-    public void fillList(){
-        MyIterator iter = Dictionary.getInstance().createIterator("F");
-        while(iter.hasNext()){
-            Map.Entry<String,String> next = iter.next();
-            listTerms.getItems().add(next.getKey());
-        }
-
+    public void configureList(){
         listTerms.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -50,6 +45,18 @@ public class DictoController {
                 lblMeaning.setText(meaning);
             }
         });
+    }
+
+    public void fillList(){
+        listTerms.getItems().clear();
+
+        MyIterator iter = Dictionary.getInstance().createIterator("F");
+        while(iter.hasNext()){
+            Map.Entry<String,String> next = iter.next();
+            listTerms.getItems().add(next.getKey());
+        }
+        listTerms.getItems().sort(Comparator.naturalOrder());
+        lblMeaning.setText("");
     }
 
     public void modifyGrid(){
@@ -75,6 +82,8 @@ public class DictoController {
                             Map.Entry<String,String> next = iter.next();
                             listTerms.getItems().add(next.getKey());
                         }
+                        listTerms.getItems().sort(Comparator.naturalOrder());
+                        lblMeaning.setText("");
                     }
                 }
         );
@@ -128,6 +137,11 @@ public class DictoController {
 
         hboxFunctions.getChildren().add(0,btnAdd);
         HBox.setMargin(btnAdd, insets);
+    }
+
+    @FXML
+    protected void onActionReestablecer(){
+        fillList();
     }
 
     @FXML
