@@ -6,7 +6,10 @@ import org.examples.caso2.models.iterators.Iterable;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Dictionary implements Iterable{
@@ -102,5 +105,49 @@ public class Dictionary implements Iterable{
         }
 
         return iter;
+    }
+
+    public void addWord(String word, String category, String meaning){
+        switch (category){
+            case "Adjetivo":
+                dictionary.get("A").put(word, meaning);
+                break;
+            case "Verbo":
+                dictionary.get("V").put(word, meaning);
+                break;
+            case "Sustantivo":
+                dictionary.get("N").put(word, meaning);
+                break;
+        }
+    }
+
+    public String getMeaning(String word){
+        if(dictionary.get("A").containsKey(word)){
+            return dictionary.get("A").get(word);
+        }
+        if(dictionary.get("V").containsKey(word)){
+            return dictionary.get("V").get(word);
+        }
+        if(dictionary.get("N").containsKey(word)){
+            return dictionary.get("N").get(word);
+        }
+
+        return "";
+    }
+
+    public void saveDictionary(){
+        try {
+            FileWriter writer = new FileWriter(LoginApplication.class.getResource("dicto.txt").getPath(),false);
+
+            for(Map.Entry<String,HashMap<String,String>> category : getDictionary().entrySet()){
+                for(Map.Entry<String,String> entry : category.getValue().entrySet()){
+                    writer.write(entry.getKey() + "/" + entry.getValue() + "/" + category.getKey()  + "\n");
+                }
+            }
+
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Writing process failed");
+        }
     }
 }

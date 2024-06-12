@@ -6,6 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.examples.caso2.gui.viewers.DictoApplication;
 import org.examples.caso2.models.Authentication;
+import org.examples.caso2.models.Dictionary;
 import org.examples.caso2.models.dicto.AdminDictoBuilder;
 import org.examples.caso2.models.dicto.DictoBuilder;
 import org.examples.caso2.models.dicto.Director;
@@ -45,6 +46,7 @@ public class LoginController {
 
     @FXML
     protected void onActionSalir() {
+        Dictionary.getInstance().saveDictionary();
         Platform.exit();
     }
 }

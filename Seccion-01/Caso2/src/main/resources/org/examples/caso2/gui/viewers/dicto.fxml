@@ -22,7 +22,7 @@
                         <ListView prefHeight="510.0" prefWidth="640.0" fx:id="listTerms"/>
                     </content>
                 </ScrollPane>
-                <Label prefHeight="207.0" prefWidth="643.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;"/>
+                <Label prefHeight="207.0" prefWidth="643.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" fx:id="lblMeaning"/>
             </children>
         </VBox>
         <VBox prefHeight="200.0" prefWidth="640.0">

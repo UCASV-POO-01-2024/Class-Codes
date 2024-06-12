@@ -5,7 +5,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -25,6 +27,9 @@ public class DictoController {
     private ListView listTerms;
 
     @FXML
+    private Label lblMeaning;
+
+    @FXML
     private HBox hboxCategories;
 
     @FXML
@@ -36,6 +41,15 @@ public class DictoController {
             Map.Entry<String,String> next = iter.next();
             listTerms.getItems().add(next.getKey());
         }
+
+        listTerms.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                String word = listTerms.getSelectionModel().getSelectedItems().get(0).toString();
+                String meaning = Dictionary.getInstance().getMeaning(word);
+                lblMeaning.setText(meaning);
+            }
+        });
     }
 
     public void modifyGrid(){
