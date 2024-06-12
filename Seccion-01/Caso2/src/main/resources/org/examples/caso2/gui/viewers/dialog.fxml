@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.examples.caso2.gui.controllers.DialogController">
+    <children>
+        <HBox alignment="CENTER" prefHeight="94.0" prefWidth="600.0">
+            <children>
+                <Label text="Palabra:">
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </Label>
+                <TextField fx:id="tfNewWord"/>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="94.0" prefWidth="600.0">
+            <children>
+                <Label text="Categoría:">
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </Label>
+                <ComboBox prefWidth="150.0" fx:id="cbNewWord">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Sustantivo"/>
+                            <String fx:value="Verbo"/>
+                            <String fx:value="Adjetivo"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="462.0" prefWidth="600.0">
+            <children>
+                <Label text="Signigicado:">
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </Label>
+                <TextArea prefHeight="462.0" prefWidth="426.0" fx:id="taNewWord"/>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="150.0" prefWidth="600.0">
+            <children>
+                <Button mnemonicParsing="false" text="Agregar" onAction="#onActionAnyadir">
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" text="Cancelar" onAction="#onActionSalir">
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+    </children>
+</VBox>
