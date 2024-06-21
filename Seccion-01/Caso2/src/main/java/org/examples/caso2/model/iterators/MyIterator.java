@@ -1,4 +1,4 @@
-package org.examples.caso2.models.iterators;
+package org.examples.caso2.model.iterators;
 
 import java.util.Map;
 

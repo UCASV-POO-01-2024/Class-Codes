@@ -5,13 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.examples.caso2.gui.viewers.DictoApplication;
-import org.examples.caso2.models.Authentication;
-import org.examples.caso2.models.Dictionary;
-import org.examples.caso2.models.dicto.AdminDictoBuilder;
-import org.examples.caso2.models.dicto.DictoBuilder;
-import org.examples.caso2.models.dicto.Director;
-
-import java.io.IOException;
+import org.examples.caso2.model.Authentication;
+import org.examples.caso2.model.Dictionary;
+import org.examples.caso2.model.dicto.*;
 
 public class LoginController {
     @FXML
@@ -21,32 +17,46 @@ public class LoginController {
     private TextField tfPass;
 
     @FXML
-    protected void onActionLogin() {
-        if(Authentication.authenticate(tfUser.getText(), tfPass.getText())){
-            Stage current = (Stage) tfUser.getScene().getWindow();
-            current.close();
+    protected void onActionLogin(){
+        if(Authentication.authenticate(tfUser.getText(),tfPass.getText())){
+            ((Stage) tfUser.getScene().getWindow()).close();
+
+            Dictionary.initialize();
+
+            DictoBuilder builder;
+            switch (Authentication.getActiveUserType()){
+                case "A":
+                    builder = new AdminDictoBuilder();
+                    break;
+                case "T":
+                    builder = new TeacherDictoBuilder();
+                    break;
+                case "S":
+                    builder = new StudentDictoBuilder();
+                    break;
+                default:
+                    builder = null;
+            }
+            builder.init();
+            Director dir = new Director(builder);
+            DictoApplication app = builder.getResult();
 
             Stage stage = new Stage();
             try {
-                DictoBuilder builder = new AdminDictoBuilder();
-                builder.init();
-                DictoApplication app = builder.getResult();
                 app.start(stage);
                 app.init();
-
-                Director dir = new Director(builder);
-                dir.make(Authentication.getUserType());
-            } catch (IOException e) {
-                System.out.println("An error occurred.");
-                e.printStackTrace();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
+
+            dir.make(Authentication.getActiveUserType());
+
             stage.show();
         }
     }
 
     @FXML
     protected void onActionSalir() {
-        Dictionary.getInstance().saveDictionary();
         Platform.exit();
     }
 }

@@ -13,8 +13,8 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.examples.caso2.gui.viewers.DialogApplication;
 import org.examples.caso2.gui.viewers.LoginApplication;
-import org.examples.caso2.models.Dictionary;
-import org.examples.caso2.models.iterators.MyIterator;
+import org.examples.caso2.model.Dictionary;
+import org.examples.caso2.model.iterators.MyIterator;
 
 import java.io.IOException;
 import java.util.Comparator;
@@ -22,13 +22,13 @@ import java.util.Map;
 
 public class DictoController {
     @FXML
-    private GridPane letterGrid;
-
-    @FXML
     private ListView listTerms;
 
     @FXML
     private Label lblMeaning;
+
+    @FXML
+    private GridPane letterGrid;
 
     @FXML
     private HBox hboxCategories;
@@ -47,115 +47,123 @@ public class DictoController {
         });
     }
 
-    public void fillList(){
+    public void updateList(){
         listTerms.getItems().clear();
-
         MyIterator iter = Dictionary.getInstance().createIterator("F");
         while(iter.hasNext()){
-            Map.Entry<String,String> next = iter.next();
-            listTerms.getItems().add(next.getKey());
+            Map.Entry<String,String> entry = iter.next();
+            listTerms.getItems().add(entry.getKey());
         }
         listTerms.getItems().sort(Comparator.naturalOrder());
-        lblMeaning.setText("");
     }
 
-    public void modifyGrid(){
+    public void placeLetters(){
         String initials = Dictionary.getInstance().getInitials();
+
         int i = 0, j = 0;
         for(Character c : initials.toCharArray()){
-            Button btn = new Button(c.toString());
-            configureCategoryButton(btn,"L",c.toString());
-            letterGrid.add(btn, i%6, j);
-            i++;
-            if(i > 0 && i%6 == 0) j++;
+            Button btn = new Button( c.toString() );
+
+            btn.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        listTerms.getItems().clear();
+                        MyIterator iter = Dictionary.getInstance().createIterator("L", c.toString());
+                        while(iter.hasNext()){
+                            Map.Entry<String,String> entry = iter.next();
+                            listTerms.getItems().add(entry.getKey());
+                        }
+                        listTerms.getItems().sort(Comparator.naturalOrder());
+                    }
+                }
+            );
+
+            letterGrid.add(btn, j, i);
+            j++;
+            if(j == 6){
+                i++;
+                j = 0;
+            }
         }
     }
 
-    private void configureCategoryButton(Button btn, String... type){
+    private void configureButtonAction(Button btn, String category){
         btn.setOnAction(
                 new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
                         listTerms.getItems().clear();
-                        MyIterator iter = Dictionary.getInstance().createIterator(type);
+                        MyIterator iter = Dictionary.getInstance().createIterator(category);
                         while(iter.hasNext()){
-                            Map.Entry<String,String> next = iter.next();
-                            listTerms.getItems().add(next.getKey());
+                            Map.Entry<String,String> entry = iter.next();
+                            listTerms.getItems().add(entry.getKey());
                         }
                         listTerms.getItems().sort(Comparator.naturalOrder());
-                        lblMeaning.setText("");
                     }
                 }
         );
     }
 
-    public void placeCategories() {
+    private void createButton(String name, double width, HBox hbox, String category){
+        Button btn = new Button(name);
+        btn.setPrefWidth(width);
+
         Insets insets = new Insets(10, 10, 10, 10);
+        btn.setPadding(insets);
 
-        Button btnAdjectives = new Button("Adjectives");
-        Button btnVerbs = new Button("Verbs");
-        Button btnNouns = new Button("Nouns");
-        btnAdjectives.setPrefWidth(100.0);
-        btnVerbs.setPrefWidth(100.0);
-        btnNouns.setPrefWidth(100.0);
-        btnAdjectives.setPadding(insets);
-        btnVerbs.setPadding(insets);
-        btnNouns.setPadding(insets);
+        hbox.getChildren().add(0,btn);
+        HBox.setMargin(btn,insets);
 
-        configureCategoryButton(btnAdjectives,"A");
-        configureCategoryButton(btnVerbs,"V");
-        configureCategoryButton(btnNouns,"N");
-
-        hboxCategories.getChildren().addAll(btnAdjectives, btnVerbs, btnNouns);
-        HBox.setMargin(btnAdjectives, insets);
-        HBox.setMargin(btnVerbs, insets);
-        HBox.setMargin(btnNouns, insets);
+        if(category != null) configureButtonAction(btn, category);
+        else{
+            btn.setOnAction(
+                    new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent actionEvent) {
+                            Stage stage = new Stage();
+                            try {
+                                DialogApplication app = new DialogApplication();
+                                app.start(stage);
+                            } catch (IOException e) {
+                                System.out.println("An error occurred.");
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+            );
+        }
     }
 
-    public void placeAdding() {
-        Insets insets = new Insets(10, 10, 10, 10);
+    public void placeCategories(){
+        createButton("Sustantivos",100,hboxCategories, "N");
+        createButton("Verbos",100,hboxCategories, "V");
+        createButton("Adjetivos",100,hboxCategories, "A");
+    }
 
-        Button btnAdd = new Button("Añadir");
-        btnAdd.setPrefWidth(100.0);
-        btnAdd.setPadding(insets);
-
-        btnAdd.setOnAction(
-            new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-                    Stage stage = new Stage();
-                    try {
-                        DialogApplication app = new DialogApplication();
-                        app.start(stage);
-                    } catch (IOException e) {
-                        System.out.println("An error occurred.");
-                        e.printStackTrace();
-                    }
-                }
-            }
-        );
-
-        hboxFunctions.getChildren().add(0,btnAdd);
-        HBox.setMargin(btnAdd, insets);
+    public void placeAdding(){
+        createButton("Añadir",75,hboxFunctions, null);
     }
 
     @FXML
     protected void onActionReestablecer(){
-        fillList();
+        updateList();
+        lblMeaning.setText("");
+        letterGrid.getChildren().clear();
+        placeLetters();
     }
 
     @FXML
     protected void onActionSalir(){
-        Stage current = (Stage) letterGrid.getScene().getWindow();
-        current.close();
+        Dictionary.getInstance().saveDictionary();
+
+        ((Stage) letterGrid.getScene().getWindow()).close();
 
         Stage stage = new Stage();
+        LoginApplication app = new LoginApplication();
         try {
-            LoginApplication app = new LoginApplication();
             app.start(stage);
         } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         stage.show();
     }

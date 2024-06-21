@@ -1,4 +1,4 @@
-package org.examples.caso2.models.iterators;
+package org.examples.caso2.model.iterators;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,10 +48,6 @@ public class LetterIterator implements MyIterator {
 
     @Override
     public Map.Entry<String,String> next() {
-        if(!hasNext()){
-           return null;
-        }
-
         Map.Entry<String,String> ans = null;
 
         while(categoryState != null){
